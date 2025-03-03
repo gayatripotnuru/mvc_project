@@ -8,12 +8,15 @@
 </head>
 <body>
     <header id="main-header">
-        <img src="logo.png" alt="logo">
-        <div class="auth-buttons">
-            <button onclick="button()">Sign in</button>
-            <button onclick="button1()">Sign up</button>
-        </div>
-    </header>
+    <div class="header-left">
+        <img src="https://i.pinimg.com/736x/e5/db/f2/e5dbf27053bcb6c8a4b187244d44078a.jpg" alt="Logo">
+    </div>
+    <div class="auth-buttons">
+        <button onclick="button()">Sign in</button>
+        <button onclick="button1()">Sign up</button>
+    </div>
+</header>
+    
     
     <main class="container">
         <div class="signin-form">

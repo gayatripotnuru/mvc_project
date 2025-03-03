@@ -7,28 +7,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="seats")
-public class Seats {
+@Table(name="admins")
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
-    private int seatId;
+    @Column(name = "admin_id")
+    private int AdminId;
 
-    @ManyToOne
-    @JoinColumn(name = "showtime_id")
-    private ShowTimes showtime;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "seat_number")
-    private String seatNumber;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "is_booked")
-    private String isBooked;
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "is_active")
+    private String isActive;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -42,45 +45,54 @@ public class Seats {
     @Column(name = "updated_by")
     private String updatedBy;
     
-    
 
-	public Seats() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getId() {
-		return seatId;
+		return AdminId;
 	}
 
 	public void setId(int id) {
-		this.seatId = id;
+		this.AdminId = id;
 	}
 
-	
-
-	public ShowTimes getShowtime() {
-		return showtime;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setShowtime(ShowTimes showtime) {
-		this.showtime = showtime;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getSeatNumber() {
-		return seatNumber;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSeatNumber(String seatNumber) {
-		this.seatNumber = seatNumber;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String isBooked() {
-		return isBooked;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setBooked(String isBooked) {
-		this.isBooked = isBooked;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String isActive() {
+		return isActive;
+	}
+
+	public void setActive(String isActive) {
+		this.isActive = isActive;
 	}
 
 	public Date getCreatedAt() {

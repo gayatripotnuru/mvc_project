@@ -1,114 +1,153 @@
-body {
-    font-family: Arial, sans-serif;
+/* Global Reset */
+* {
     margin: 0;
     padding: 0;
-   background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-
+/* Body Styles */
+body {
+     background: linear-gradient(135deg, #2b5876, #4e4376);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-#main-header {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background-color: #222;
+    min-height: 100vh;  /* Use min-height to avoid cutting off on shorter screens */
+    margin: 0;
+}
+
+/* Header Styles - Reduced Height */
+#main-header {
+    width: 100%;
+    background-color: #111;
     color: white;
+    padding: 10px 20px;  /* Reduce padding to reduce height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 60px; /* Set a fixed height */
 }
 
+/* Logo - No Border */
 #main-header img {
-    width: 80px;
-    height: auto;
-    border: 1px solid white;
-    padding: 5px;
+    height: 40px;  /* Smaller logo */
+    object-fit: contain;
 }
 
+/* Auth Buttons */
 .auth-buttons button {
-    padding: 10px 15px;
-    margin-left: 10px;
-    border: none;
-    background: white;
+    background-color: white;
     color: black;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 8px 15px;  /* Smaller padding */
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-left: 10px;
 }
 
+.auth-buttons button:hover {
+    background-color: #ddd;
+}
 
-
+/* Main Container - Add Space Below Header */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
+    width: 100%;
     padding: 20px;
+    margin-top: 80px;
+     margin-top: 35px;   /* Space after fixed header */
 }
 
+/* Form Card Styles */
 .signup-form {
     width: 100%;
-    max-width: 350px;
-    padding: 20px;
-    border-radius: 8px;
+    max-width: 400px;
+    padding: 25px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Form Heading */
 .signup-form h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    color: black;
 }
 
+/* Label Styles */
 .signup-form label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 8px; /* Space between label and input */
+    font-size: 14px;
+    color: black;
 }
 
+/* Input Styles */
 .signup-form input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Space after input */
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 14px;
 }
 
+/* Submit Button */
 .signup-form button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: none;
     background: black;
     color: white;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
 
-
+/* Footer */
 footer {
+    width: 100%;
     text-align: center;
     padding: 10px;
     background-color: #222;
     color: white;
     font-size: 14px;
-} 
+    position: fixed;
+    bottom: 0;
+}
 
+/* Responsive Styles */
 @media (max-width: 600px) {
     #main-header {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        height: auto;
     }
-    
+
     .auth-buttons {
-        margin-top: 10px;
+        margin-top: 8px;
     }
-    
+
+    .container {
+        margin-top: 100px;  /* More space on small screens */
+    }
+
     .signup-form {
         width: 90%;
+        padding: 20px;
     }
 }

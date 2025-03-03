@@ -1,18 +1,44 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Styling */
+* {
     margin: 0;
     padding: 0;
-    color: #333;
-}
-.search-box{
-    margin-right: 40%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+body {
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header Section */
+.main-header {
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+}
+
+.main-header img {
+    height: 50px;
+}
+
+.main-header button {
+    background-color: #fff;
+    color: #111;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 header#main-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 15px 30px;
     background-color: #222;
     color: #fff;
 }
@@ -21,6 +47,20 @@ header#main-header img {
     width: 50px;
     height: auto;
 }
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    padding: 8px;
+    width: 200px;
+    border: 2px solid white;
+    border-radius: 5px;
+    outline: none;
+}
+
 header#main-header button {
     padding: 8px 15px;
     border: none;
@@ -30,59 +70,54 @@ header#main-header button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+header#main-header button:hover {
+    background-color: #ddd;
+}
+
+/* Container */
 .container {
-    
-    max-width: 999px;
-    margin: 30px;
+    max-width: 1100px;
+    margin: 30px auto;
     background: #ffffff;
-    border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
-   
+    border: 1px solid #ddd;
 }
 
+/* Layout for Image & Seats */
 .main-content {
-    height: 100%;
-    max-width:120%;
     display: flex;
-    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
 }
 
-.movie-info {
-    
-    flex: auto;
-    background-color: #f1f1f1;
-    
+/* Movie Poster */
+.movie-details img {
+	margin-top:38px;
+    width: 250px;
+    height: auto;
     border-radius: 8px;
 }
 
-.movie-profile {
-    max-width: 50%;
-    height: 200px;
-    background-color: #e0e0e0;
-    margin: 50px;
-    border-radius: 8px;
-    margin-left: 90px;
-    padding: 10px;
-}
-
+/* Seat Selection */
 .seat-selection {
-    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.select-title {
-    margin-top: 10px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* Seat Grid */
 .seat-grid {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     gap: 10px;
     justify-content: center;
+    margin-top: 10px;
 }
 
+/* Seat Style */
 .seat {
     width: 40px;
     height: 40px;
@@ -92,46 +127,44 @@ header#main-header button {
     border-radius: 4px;
     cursor: pointer;
     border: 1px solid #81c784;
+    font-weight: bold;
 }
 
 .seat:hover {
     background-color: #81c784;
 }
 
-.seat.selected {
-    background-color: #388e3c;
-    color: white;
-}
-
-.row-label {
-    grid-column: 1 / span 17;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-}
-
+/* Buttons */
 .payment-section {
-    text-align: right;
     margin-top: 20px;
+    display: flex;
+    gap: 15px;
 }
 
-.payment-section button {
+.confirm-btn {
     padding: 10px 20px;
-    background-color: black;
+    background: #388e3c;
     color: white;
     border: none;
     cursor: pointer;
-    width: 100px;
+    font-size: 16px;
+    border-radius: 4px;
 }
 
-.payment-section button:hover {
-    background-color: #e53935;
+.confirm-btn:hover {
+    background: #2e7d32;
 }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
+.cancel-btn {
+    padding: 10px 20px;
+    background: #d32f2f;
     color: white;
-    font-size: 14px;
-} 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.cancel-btn:hover {
+    background: #b71c1c;
+}

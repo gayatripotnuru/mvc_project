@@ -1,50 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, com.MovieApp.MovieApp.Entity.Movies, com.MovieApp.MovieApp.Entity.Theater, com.MovieApp.MovieApp.Entity.ShowTimes" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/TicketSlot.css">
+    <title>Movie Slots</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/TicketSlot.css">
 </head>
 <body>
-    <header id="main-header">
-        <img src="" alt="Logo">
-        
-      <div class="search-box">
-        <input type="text" placeholder="Search movies">
-        <input type="text" placeholder="Search theatres">
-      </div>
-        
-        <button>Profile</button>
-    </header>
-    
-    <main>
-        <div class="content">
-            <div class="movie-profile">
-                <div class="movie-box">Movie profile</div>
-                <div class="movie-box">Movie info</div>
-            </div>
-            <div class="theater-section">
-                <div><h1>Theater name</h1></div>
-                <div><br>
-                     Select date:
-                  <input type="date"><br><br>
-                </div>
-                <div>
-                  Select timings: 
-                  <select>
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="12:30 PM">12:30 PM</option>
-                    <option value="03:00 PM">03:00 PM</option>
-                    <option value="06:00 PM">06:00 PM</option>
-                    <option value="09:00 PM">09:00 PM</option>
-                  </select>
-                </div><br><br>
-                <button>Book Now</button>
+
+<header class="main-header">
+    <img src="https://i.pinimg.com/736x/e5/db/f2/e5dbf27053bcb6c8a4b187244d44078a.jpg" alt="Logo">
+    <button onclick="window.location.href='${pageContext.request.contextPath}/user/userprofile'">Profile</button>
+</header>
+
+<main>
+    <div class="content">
+        <!-- Movie Profile Section -->
+        <div class="movie-profile">
+            <% 
+                Movies selectedMovie = (Movies) request.getAttribute("selectedMovie"); 
+                if (selectedMovie != null) { 
+            %>
+                <img src="<%= selectedMovie.getMovieImageUrl() %>" alt="Movie Poster">
+                <h3><%= selectedMovie.getTitle() %></h3>
+                <p>Genre: <%= selectedMovie.getGenre() %></p>
+                <p>Duration: <%= selectedMovie.getDuration() %> minutes</p>
+                <p>Language: <%= selectedMovie.getLanguage() %></p>
+            <% } else { %>
+                <p style="color: red;">Movie details not available.</p>
+            <% } %>
         </div>
-    </main>
-    <footer>
-        &copy; 2025 Your Company. All rights reserved.
-    </footer>
+
+        <!-- Showtime Section -->
+        <div class="theater-section">
+            <h1>Available Showtimes</h1>
+
+            <%
+                List<ShowTimes> showtimes = (List<ShowTimes>) request.getAttribute("showtimes");
+                if (showtimes != null && !showtimes.isEmpty()) {
+            %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Theater</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Date</th>
+                            <th>Seats Available</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            for (ShowTimes showtime : showtimes) {
+                        %>
+                            <tr>
+                                <td><%= showtime.getMovie().getTitle() %></td>
+                                <td><%= showtime.getTheater().getName() %></td>
+                                <td><%= showtime.getStartTime() %></td>
+                                <td><%= showtime.getEndTime() %></td>
+                                <td><%= showtime.getStartDate() %></td>
+                                <td><%= showtime.getAvailableSeats() %></td>
+                                <td>
+                                    <button onclick="goToSeatSelection('<%= showtime.getMovie().getMovieId() %>', '<%= showtime.getTheater().getTheaterId() %>')">
+                                        Book Now
+                                    </button>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <%
+                } else {
+            %>
+                <p style="color: red; font-weight: bold; text-align: center;">No showtimes available for this movie in the selected theater.</p>
+            <%
+                }
+            %>
+        </div>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 Your Company. All rights reserved.
+</footer>
+
+<script>
+function goToSeatSelection(movieId, theaterId) {
+    window.location.href = '/seat?movieId=' + movieId + '&theaterId=' + theaterId;
+}
+</script>
+
 </body>
 </html>
