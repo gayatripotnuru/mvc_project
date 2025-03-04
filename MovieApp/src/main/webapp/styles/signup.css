@@ -8,21 +8,19 @@
 
 /* Body Styles */
 body {
-     background: linear-gradient(135deg, #2b5876, #4e4376);
+    background: linear-gradient(135deg, #2b5876, #4e4376);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;  /* Use min-height to avoid cutting off on shorter screens */
+    min-height: 100vh;
     margin: 0;
 }
 
-/* Header Styles - Reduced Height */
+/* Header Styles - Flexible and Responsive */
 #main-header {
     width: 100%;
     background-color: #111;
     color: white;
-    padding: 10px 20px;  /* Reduce padding to reduce height */
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,75 +28,81 @@ body {
     top: 0;
     left: 0;
     z-index: 100;
-    height: 60px; /* Set a fixed height */
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
-/* Logo - No Border */
+/* Logo */
 #main-header img {
-    height: 40px;  /* Smaller logo */
+    height: 40px;
     object-fit: contain;
 }
 
 /* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
 .auth-buttons button {
     background-color: white;
     color: black;
-    padding: 8px 15px;  /* Smaller padding */
+    padding: 8px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s;
-    margin-left: 10px;
 }
 
 .auth-buttons button:hover {
     background-color: #ddd;
 }
 
-/* Main Container - Add Space Below Header */
+/* Main Container */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    flex-grow: 1;
     width: 100%;
     padding: 20px;
-    margin-top: 80px;
-     margin-top: 35px;   /* Space after fixed header */
+    margin-top: 80px; /* Space below fixed header */
+    margin-bottom: 60px; /* Space above footer */
 }
 
-/* Form Card Styles */
+/* Form Card */
 .signup-form {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     padding: 25px;
     background-color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 /* Form Heading */
 .signup-form h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 26px;
     color: black;
 }
 
-/* Label Styles */
+/* Labels */
 .signup-form label {
     display: block;
     font-weight: bold;
-    margin-bottom: 8px; /* Space between label and input */
+    margin-bottom: 5px;
     font-size: 14px;
     color: black;
 }
 
-/* Input Styles */
+/* Inputs */
 .signup-form input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px; /* Space after input */
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
@@ -117,6 +121,20 @@ body {
     transition: background 0.3s ease;
 }
 
+.signup-form button:hover {
+    background-color: #333;
+}
+
+/* Message Box */
+.message {
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 /* Footer */
 footer {
@@ -130,24 +148,47 @@ footer {
     bottom: 0;
 }
 
-/* Responsive Styles */
+/* Responsive - Smaller Screens */
 @media (max-width: 600px) {
     #main-header {
         flex-direction: column;
         align-items: flex-start;
         height: auto;
+        padding: 10px;
     }
 
     .auth-buttons {
-        margin-top: 8px;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-start;
     }
 
     .container {
-        margin-top: 100px;  /* More space on small screens */
+        margin-top: 100px;
+        padding: 10px;
     }
 
     .signup-form {
-        width: 90%;
+        width: 100%;
         padding: 20px;
+    }
+}
+
+/* Responsive - Larger Screens (Above 1200px) */
+@media (min-width: 1200px) {
+    .signup-form {
+        padding: 40px;
+    }
+
+    .signup-form h2 {
+        font-size: 28px;
+    }
+
+    .signup-form button {
+        font-size: 18px;
+    }
+
+    .container {
+        margin-top: 90px;
     }
 }

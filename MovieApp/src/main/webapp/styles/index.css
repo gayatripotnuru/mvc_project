@@ -8,7 +8,7 @@
 
 /* Body Styles */
 body {
-   background: linear-gradient(135deg, #2b5876, #4e4376);
+    background: linear-gradient(135deg, #2b5876, #4e4376);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,20 +31,13 @@ body {
     left: 0;
     z-index: 100;
     height: 60px;
+    flex-wrap: wrap; /* Ensure responsiveness */
 }
+
 /* Logo */
 #main-header img {
     height: 40px;
     object-fit: contain;
-}
-
-/* Application Title */
-.app-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-    margin: 0;
-    white-space: nowrap;
 }
 
 /* Auth Buttons */
@@ -62,7 +55,6 @@ body {
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s;
-    width: auto; /* Remove the 190% width */
 }
 
 .auth-buttons button:hover {
@@ -73,10 +65,11 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
-    margin-top: 40px;
+    flex: 1;
     padding: 20px;
+    margin-top: 10px; /* Space below header */
 }
 
 /* Signin Form */
@@ -84,9 +77,9 @@ body {
     width: 100%;
     max-width: 400px;
     background: white;
-    padding: 25px;
-    
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
@@ -155,8 +148,8 @@ footer {
     background-color: #222;
     color: white;
     font-size: 14px;
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    margin-top: auto;
 }
 
 /* Responsive Design */
@@ -165,30 +158,35 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         height: auto;
-    }
-
-    .header-left {
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 8px;
+        padding: 10px;
     }
 
     .auth-buttons {
-        justify-content: flex-end;
+        margin-top: 5px;
+        justify-content: flex-start;
         width: 100%;
     }
 
     .container {
+        margin-top: 20px;
         padding: 15px;
-        margin-top: 30px;
+        align-items: flex-start;
     }
 
     .signin-form {
         width: 100%;
         padding: 20px;
     }
+}
 
-    .app-title {
-        font-size: 18px;
+/* Large Screens - Center Form */
+@media (min-width: 1024px) {
+    .container {
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .signin-form {
+        padding: 35px;
     }
 }

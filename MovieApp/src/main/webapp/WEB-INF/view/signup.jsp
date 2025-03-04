@@ -31,6 +31,9 @@
 
                 <label for="phone">Enter your Phone Number:</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                
+                <label for="email">Enter your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="password">Create your Password:</label>
                 <input type="password" id="password" name="password" placeholder="Create a password" required>
